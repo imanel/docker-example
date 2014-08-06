@@ -1,0 +1,16 @@
+postgres_defaults: &postgres_defaults
+  adapter:   postgresql
+  encoding:  utf8
+  port:      5432
+  host:      <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
+  username:  <%= ENV['POSTGRES_ENV_USERNAME'] %>
+  password:  <%= ENV['POSTGRES_ENV_PASSWORD'] %>
+  pool:      5
+
+development:
+  <<: *postgres_defaults
+  database: docker_example_development
+
+test:
+  <<: *postgres_defaults
+  database: docker_example_test
